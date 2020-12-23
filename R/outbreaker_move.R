@@ -33,6 +33,7 @@ outbreaker_move <- function(moves, data, param_current,
     ## move parameters / augmented data
     for (j in seq_len(J)) {
       ## move parameters
+      #cat(sprintf("\n### Working on %s for %i iteration ###\n", names(moves)[j], i))
       param_current <- moves[[j]](param_current)
 
       ## safemode
@@ -55,7 +56,6 @@ outbreaker_move <- function(moves, data, param_current,
       param_store <- outbreaker_mcmc_store(param_current, param_store, data,
                                            config, likelihoods, priors, i)
     }
-
   } # end of the chain
 
   if(config$pb) {
