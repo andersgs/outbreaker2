@@ -171,7 +171,7 @@ double cpp_ll_genetic(Rcpp::List data, Rcpp::List param, SEXP i,
   } else { // use of a customized likelihood function
     Rcpp::Function f = Rcpp::as<Rcpp::Function>(custom_function);
 
-    return Rcpp::as<double>(f(data, param));
+    return Rcpp::as<double>(f(data, param, i));
   }
 }
 
@@ -248,7 +248,7 @@ double cpp_ll_timing_infections(Rcpp::List data, Rcpp::List param, SEXP i,
   } else { // use of a customized likelihood function
     Rcpp::Function f = Rcpp::as<Rcpp::Function>(custom_function);
 
-    return Rcpp::as<double>(f(data, param));
+    return Rcpp::as<double>(f(data, param, i));
   }
 }
 
@@ -310,7 +310,7 @@ double cpp_ll_timing_sampling(Rcpp::List data, Rcpp::List param, SEXP i,
   }  else { // use of a customized likelihood function
     Rcpp::Function f = Rcpp::as<Rcpp::Function>(custom_function);
 
-    return Rcpp::as<double>(f(data, param));
+    return Rcpp::as<double>(f(data, param, i));
   }
 }
 
@@ -387,7 +387,7 @@ double cpp_ll_reporting(Rcpp::List data, Rcpp::List param, SEXP i,
   } else { // use of a customized likelihood function
     Rcpp::Function f = Rcpp::as<Rcpp::Function>(custom_function);
 
-    return Rcpp::as<double>(f(data, param));
+    return Rcpp::as<double>(f(data, param, i));
   }
 }
 
@@ -499,7 +499,7 @@ double cpp_ll_contact(Rcpp::List data, Rcpp::List param, SEXP i,
   } else { //use of a customized likelihood function
     Rcpp::Function f = Rcpp::as<Rcpp::Function>(custom_function);
 
-    return Rcpp::as<double>(f(data, param));
+    return Rcpp::as<double>(f(data, param, i));
   }
 }
 
