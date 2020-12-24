@@ -132,21 +132,24 @@ custom_likelihoods <- function(...) {
     }
 
 
-    ## check they all have a single argument
+    ## check they all have a three arguments
+    ## it should be data, params, and i
+    ## but make this more general to allow for easy updating
+    ## if necessary
 
-    with_two_args <- function(x) {
+    with_x_args <- function(x, max_args=3L) {
         if(is.function(x)) {
-            return (length(methods::formalArgs(x)) == 2L)
+            return (length(methods::formalArgs(x)) == max_args)
         }
 
         return(TRUE)
     }
 
-    two_args <- vapply(likelihoods, with_two_args, logical(1))
+    have_max_args <- vapply(likelihoods, with_x_args, logical(1))
 
-    if (!all(two_args)) {
-        culprits <- likelihoods_names[!two_args]
-        msg <- paste0("The following likelihoods dont' have two arguments: ",
+    if (!all(have_max_args)) {
+        culprits <- likelihoods_names[!have_max_args]
+        msg <- paste0("The following likelihoods don't have the expected number of arguments (3): data, params, and i: ",
                       paste(culprits, collapse = ", "))
         stop(msg)
     }
