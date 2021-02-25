@@ -192,10 +192,14 @@ mean(comparison$correct)
 # Customizing likelihood
 
 Likelihood functions customisation works identically to prior functions. The
-only difference is that custom functions will take two arguments (`data` and
-`param`) instead of one in the prior functions. The function used to specify
-custom likelihood is `custom_likelihoods`. Each custom function will correspond
-to a specific likelihood component:
+only difference is that custom functions will take three arguments (`data`, 
+`param`, and `i`) instead of one in the prior functions. The function used to specify
+custom likelihood is `custom_likelihoods`. The arguments `data` and `param` are
+self-explanatory, but the argument `i` is either an integer or a vector of integers. 
+The `i` is used to identify the individual(s) that are current focus of the likelihood
+function.
+
+Each custom function will correspond to a specific likelihood component:
 
 ```{r, likelihood_components}
 
@@ -230,7 +234,7 @@ model, by disabling specific components.
 
 ```{r, null_model}
 
-f_null <- function(data, param) {
+f_null <- function(data, param, i) {
    return(0.0)
 }
 
