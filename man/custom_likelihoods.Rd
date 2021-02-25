@@ -58,12 +58,15 @@ order:
 \item \code{param}: a list of parameters with the class
 \code{\link{create_param}}
 
+\item \code{i}: an integer or a vector of integers indexing the individuals
+for which the likelihood calculation is required
+
 }
 }
 \examples{
 
 ## specify a null model by disabling all likelihood components
-f_null <- function(data, param) {
+f_null <- function(data, param, i) {
   return(0.0)
 }
 
